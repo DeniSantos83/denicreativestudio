@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valdenir Santos | Full Stack Developer</title>
+  <meta name="description" content="Premium developer portfolio for remote international opportunities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: rgba(15, 23, 42, 0.78);
+      --panel-2: rgba(15, 23, 42, 0.92);
+      --line: rgba(255,255,255,0.08);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --cyan: #22d3ee;
+      --cyan-2: #67e8f9;
+      --violet: #a855f7;
+      --shadow: 0 20px 70px rgba(0,0,0,.35);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(34,211,238,.18), transparent 22%),
+        radial-gradient(circle at left, rgba(168,85,247,.14), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section { padding: 96px 0; }
+
+    .eyebrow {
+      display: inline-block;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--cyan-2);
+      margin-bottom: 14px;
+    }
+
+    .title {
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .muted {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(2,6,23,.55);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      position: relative;
+      padding: 82px 0 72px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 10px 16px;
+      border: 1px solid rgba(34,211,238,.22);
+      background: rgba(34,211,238,.08);
+      color: var(--cyan-2);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero p.lead {
+      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+      color: #cbd5e1;
+      max-width: 800px;
+      line-height: 1.75;
+      margin: 18px 0 12px;
+    }
+
+    .hero .sublead {
+      max-width: 700px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 16px;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 34px 0 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 18px;
+      padding: 14px 22px;
+      font-weight: 700;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), #7dd3fc);
+      color: #082f49;
+      box-shadow: 0 16px 36px rgba(34,211,238,.2);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.09);
+      color: white;
+    }
+    .btn-accent {
+      background: rgba(168,85,247,.12);
+      border-color: rgba(168,85,247,.26);
+      color: #e9d5ff;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      color: #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .hero-card {
+      padding: 24px;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -30% auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(34,211,238,.12), transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-card h3 {
+      margin: 6px 0 18px;
+      font-size: 1.45rem;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stack-item {
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.06);
+      color: #e2e8f0;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .stack-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(34,211,238,.28);
+    }
+
+    .highlight-box {
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(34,211,238,.08), rgba(168,85,247,.08));
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border-radius: 30px;
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(34,211,238,.24);
+      box-shadow: 0 24px 64px rgba(0,0,0,.35);
+    }
+
+    .project-image {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .project-card:hover .project-image img { transform: scale(1.06); }
+
+    .project-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(2,6,23,.95), rgba(2,6,23,.18) 55%, transparent);
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      margin: 0 0 12px;
+      font-size: 1.5rem;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 20px;
+    }
+
+    .stack-tags span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(34,211,238,.1);
+      border: 1px solid rgba(34,211,238,.18);
+      color: #cffafe;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-actions a {
+      padding: 11px 15px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .action-light {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .action-dark {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: white;
+    }
+
+    .experience-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .exp-card,
+    .contact-card {
+      padding: 26px;
+      border-radius: 28px;
+    }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .exp-top h3 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .exp-period {
+      color: var(--cyan-2);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .exp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .exp-list li {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 12px;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--cyan), #7dd3fc);
+      margin-top: 12px;
+    }
+
+    .contact-wrap {
+      border-radius: 34px;
+      padding: 34px;
+      background: linear-gradient(135deg, rgba(34,211,238,.08), rgba(2,6,23,.8), rgba(168,85,247,.08));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: white;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.08);
+    }
+
+    .footer {
+      padding: 28px 0 42px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .cards-grid,
+      .experience-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { display: none; }
+      .hero { padding-top: 56px; }
+      .section { padding: 80px 0; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .exp-card, .contact-card, .contact-wrap, .project-content { padding: 20px; }
+      .project-image { height: 220px; }
+      .btn { width: 100%; }
+      .cta-group { display: grid; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Valdenir Santos</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="reveal visible">
+        <div class="pill">Available for remote opportunities</div>
+        <h1 class="title">Full Stack Developer building practical digital products for real-world use.</h1>
+        <p class="lead">Valdenir da Silva Santos — React, Node.js, Python, React Native, TypeScript, and PostgreSQL.</p>
+        <p class="sublead">I develop websites, landing pages, business systems, and mobile applications with a strong focus on usability, delivery, and scalable solutions for real business and institutional contexts.</p>
+
+        <div class="cta-group">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#experience">See Experience</a>
+          <a class="btn btn-accent" href="curriculo_valdenir_dev_atualizado.pdf" download>Download CV</a>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Brazil</span>
+          <span class="tag">Remote-friendly</span>
+          <span class="tag">Web + Mobile + Systems</span>
+        </div>
+      </div>
+
+      <aside class="glass hero-card reveal visible">
+        <div class="eyebrow">Core stack</div>
+        <h3>Senior-style positioning</h3>
+        <div class="stack-grid">
+          <div class="stack-item">React</div>
+          <div class="stack-item">Node.js</div>
+          <div class="stack-item">Python</div>
+          <div class="stack-item">TypeScript</div>
+          <div class="stack-item">React Native</div>
+          <div class="stack-item">PostgreSQL</div>
+          <div class="stack-item">JavaScript</div>
+          <div class="stack-item">Bootstrap</div>
+        </div>
+        <div class="highlight-box">
+          <div class="muted"><strong style="color:#fff">Highlights</strong><br>Front-end, back-end, mobile, and real operational projects with practical impact and product thinking.</div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <div class="container grid-2">
+      <div class="reveal">
+        <div class="eyebrow">About</div>
+        <h2 class="title">A developer focused on useful, production-ready solutions.</h2>
+      </div>
+      <div class="reveal">
+        <p class="muted">I am a Brazilian developer with experience creating websites, landing pages, internal systems, and mobile applications used in real operational environments.</p>
+        <p class="muted">My work combines interface development, business logic, and system structure to deliver products that are intuitive, efficient, and aligned with real user needs.</p>
+        <p class="muted">I am especially comfortable with the JavaScript ecosystem, React, React Native, Node.js, PostgreSQL, TypeScript, and Python.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section" style="border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.02);">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:28px;">
+        <div class="eyebrow">Stack</div>
+        <h2 class="title">Technologies I work with</h2>
+        <p class="muted">A balanced profile across web, mobile, APIs, databases, and modern product delivery workflows.</p>
+      </div>
+      <div class="stack-grid reveal" style="grid-template-columns: repeat(5, minmax(0, 1fr)); gap:14px;">
+        <div class="stack-item">HTML</div>
+        <div class="stack-item">CSS</div>
+        <div class="stack-item">JavaScript</div>
+        <div class="stack-item">Bootstrap</div>
+        <div class="stack-item">React</div>
+        <div class="stack-item">React Native</div>
+        <div class="stack-item">Node.js</div>
+        <div class="stack-item">PostgreSQL</div>
+        <div class="stack-item">TypeScript</div>
+        <div class="stack-item">Python</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:28px;">
+        <div class="eyebrow">Projects</div>
+        <h2 class="title">Selected work</h2>
+        <p class="muted">A curated set of projects that presents technical ability, product thinking, and experience with practical systems.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="project-card glass reveal">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80" alt="Equipment custody mobile app">
+          </div>
+          <div class="project-content">
+            <h3>Equipment Custody Mobile App</h3>
+            <p class="muted">Mobile application for equipment custody registration and tracking, created for institutional workflows and real-world operational use.</p>
+            <div class="stack-tags">
+              <span>React Native</span>
+              <span>JavaScript</span>
+              <span>Mobile UX</span>
+            </div>
+            <div class="card-actions">
+              <a class="action-light" href="#">Live Demo</a>
+              <a class="action-dark" href="#">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card glass reveal">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80" alt="Bar command management system">
+          </div>
+          <div class="project-content">
+            <h3>Bar Command Management System</h3>
+            <p class="muted">Web system for order flow, table management, and customer consumption tracking for bars and restaurants.</p>
+            <div class="stack-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="card-actions">
+              <a class="action-light" href="#">Live Demo</a>
+              <a class="action-dark" href="#">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card glass reveal">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Mattress store system">
+          </div>
+          <div class="project-content">
+            <h3>Mattress Store Sales System</h3>
+            <p class="muted">Business-focused management system for products, sales routines, and internal store operations.</p>
+            <div class="stack-tags">
+              <span>TypeScript</span>
+              <span>Node.js</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="card-actions">
+              <a class="action-light" href="#">Live Demo</a>
+              <a class="action-dark" href="#">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card glass reveal">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80" alt="Interactive text game engine">
+          </div>
+          <div class="project-content">
+            <h3>Interactive Text Game Engine</h3>
+            <p class="muted">Narrative-driven web experience with branching choices, progression states, and immersive storytelling logic.</p>
+            <div class="stack-tags">
+              <span>JavaScript</span>
+              <span>HTML</span>
+              <span>CSS</span>
+            </div>
+            <div class="card-actions">
+              <a class="action-light" href="#">Live Demo</a>
+              <a class="action-dark" href="#">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section" style="border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.02);">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:28px;">
+        <div class="eyebrow">Experience</div>
+        <h2 class="title">Professional experience</h2>
+      </div>
+      <div class="experience-grid">
+        <div class="glass exp-card reveal">
+          <div class="exp-top">
+            <h3>Independent Full Stack Developer</h3>
+            <div class="exp-period">Recent years</div>
+          </div>
+          <ul class="exp-list">
+            <li><span class="dot"></span><span>Built websites, landing pages, internal systems, and mobile applications for real business use.</span></li>
+            <li><span class="dot"></span><span>Worked across front-end, back-end, database design, and deployment workflows.</span></li>
+            <li><span class="dot"></span><span>Delivered solutions focused on usability, speed, and practical business value.</span></li>
+          </ul>
+        </div>
+
+        <div class="glass exp-card reveal">
+          <div class="exp-top">
+            <h3>Institutional Mobile Solution</h3>
+            <div class="exp-period">TJSE</div>
+          </div>
+          <ul class="exp-list">
+            <li><span class="dot"></span><span>Developed an equipment custody registration mobile app for institutional processes.</span></li>
+            <li><span class="dot"></span><span>Focused on field usability, reliable data entry, and streamlined operational flow.</span></li>
+            <li><span class="dot"></span><span>Applied practical product decisions to support real daily usage.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-wrap reveal">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2 class="title">Let’s build something useful.</h2>
+            <p class="muted">Open to remote opportunities, freelance projects, and international collaborations focused on web platforms, internal tools, and mobile solutions.</p>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:emaildedeninho@gmail.com">your@email.com</a>
+            <a class="contact-link" href="https://github.com/DeniSantos83" target="_blank" rel="noreferrer">github.com/yourgithub</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/valdenir-da-silva-santos-07616b34/" target="_blank" rel="noreferrer">linkedin.com/in/yourprofile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">© 2026 Valdenir da Silva Santos — Full Stack Developer</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
